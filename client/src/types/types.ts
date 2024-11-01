@@ -4,7 +4,7 @@ export interface HostInfo {
     timestamp?: string;
 }
 
-export interface DomainSearchObject {
+export interface DomainSearch {
     domain: string;
     ip?: string;
     timestamp: string;

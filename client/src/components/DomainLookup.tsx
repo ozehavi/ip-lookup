@@ -1,10 +1,10 @@
 
 import { FC, useState } from "react";
-import { DomainSearchObject } from "../types/types";
+import { DomainSearch } from "../types/types";
 import Skeleton from "./common/Skeleton";
 import { FaCheck, FaExclamationCircle } from 'react-icons/fa';
 
-export const ResultMessage: FC<{ searchResult: DomainSearchObject  }> = ({ searchResult }) => {  
+export const ResultMessage: FC<{ searchResult: DomainSearch  }> = ({ searchResult }) => {  
     if(searchResult.success) 
         return (
             <div className="flex items-center gap-3 p-4 bg-green-50 border border-green-200 rounded-lg">
@@ -39,7 +39,7 @@ const cleanDomain = (input: string): string => {
 };
 
 const DomainLookup: FC = () => {
-    const [searchResult, setSearchResult] = useState<DomainSearchObject | null>(null);
+    const [searchResult, setSearchResult] = useState<DomainSearch | null>(null);
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
     const [domain, setDomain] = useState<string>("");
