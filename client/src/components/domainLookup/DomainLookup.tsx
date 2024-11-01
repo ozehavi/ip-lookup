@@ -1,7 +1,5 @@
 
 import { FC, useState } from "react";
-import { DomainSearch } from "../../types/types";
-import { FaCheck, FaExclamationCircle } from 'react-icons/fa';
 import { useSearch } from "../../context/SearchContext";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { SEARCH_ACTIONS } from "../../types/searchTypes";

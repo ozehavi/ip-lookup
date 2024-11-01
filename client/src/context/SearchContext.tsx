@@ -1,5 +1,5 @@
 import React, { useReducer, createContext, useContext, ReactNode } from 'react';
-import { SearchContextType, SearchState } from '../types/searchTypes';
+import { SearchContextType } from '../types/searchTypes';
 import { initialSearchState, searchReducer } from '../reducers/searchReducer';
 
 const SearchContext = createContext<SearchContextType | undefined>(undefined);

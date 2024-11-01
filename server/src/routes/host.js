@@ -27,6 +27,7 @@ const getPublicIP = async () => {
 };
 
 router.get('/', async function(req, res, next) {
+  
   try {
     const internalIP = getInternalIP();
     const publicIP = await getPublicIP();

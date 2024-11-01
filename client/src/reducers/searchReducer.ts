@@ -18,6 +18,16 @@ export const searchReducer = (state: SearchState, action: SearchAction): SearchS
         ...state, 
         currentSearch: null
       };
+    case 'FETCH_HISTORY':
+        return { 
+            ...state, 
+            searchHistory: action.payload
+        };
+    case 'CLEAR_HISTORY':
+        return { 
+            ...state, 
+            searchHistory: []
+        };
     default:
       return state;
   }
