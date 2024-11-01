@@ -22,8 +22,13 @@ async function resolveDomainIp(domain) {
 router.get('/:domain', async function(req, res, next) {
   try {
     const domainObject = await resolveDomainIp(req.params.domain);
+    // save search to db 
+    
 
-    return res.status(200).json(domainObject);
+    return res.status(200).json({
+      ...domainObject,
+      timestamp: new Date().getTime()
+  });
   } catch (error) {
     next(error);
   }

@@ -1,5 +1,5 @@
 const express = require('express');
-// const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 const cors = require('cors');
 const homeRouter = require('./routes/home');
 const hostInfoRouter = require('./routes/host');
@@ -13,10 +13,12 @@ app.use(cors({
 }));
 app.use(express.json());
 
-// Connect to the MongoDB database
-// mongoose.connect('mongodb+srv://ozehavi:Orenz123@cluster0.8pqq64f.mongodb.net/addcost?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
-//     .then(() => console.log('Connected to MongoDB'))
-//     .catch((err) => console.log('Error connecting to MongoDB', err));
+//Connect to the MongoDB database
+const mongoUri = process.env.MONGODB_URI || 'mongodb://mongodb:27017/ip-lookup';
+
+mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => console.log('Connected to MongoDB'))
+    .catch((err) => console.log('Error connecting to MongoDB', err));
 
 // Routes
 app.use('/', homeRouter);

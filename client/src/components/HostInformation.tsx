@@ -26,7 +26,7 @@ const HostInformation: FC = () => {
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-8">
+    <div className="bg-white rounded-2xl shadow-lg p-6">
       <h2 className="text-2xl font-semibold mb-8">
         Host Information
       </h2>
