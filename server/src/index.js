@@ -1,29 +1,84 @@
 const express = require('express');
+// const mongoose = require('mongoose');
 const cors = require('cors');
-require('dotenv').config();
+const homeRouter = require('./routes/home');
+const hostInfoRouter = require('./routes/host');
+const domainRouter = require('./routes/domain');
 
 const app = express();
-
-// Middleware
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:3000',
+  methods: ['GET'],
+  allowedHeaders: ['Content-Type']
+}));
 app.use(express.json());
 
-app.get('/', (req, res) => {
-  res.json({ message: 'Hello World!' });
-});
+// Connect to the MongoDB database
+// mongoose.connect('mongodb+srv://ozehavi:Orenz123@cluster0.8pqq64f.mongodb.net/addcost?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
+//     .then(() => console.log('Connected to MongoDB'))
+//     .catch((err) => console.log('Error connecting to MongoDB', err));
 
-app.get('/health', (req, res) => {
-  res.json({ status: 'ok' });
-});
+// Routes
+app.use('/', homeRouter);
+app.use('/host', hostInfoRouter);
+app.use('/domain', domainRouter);
 
-// Error handling middleware
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).json({ message: 'Something broke!' });
-});
+// connection
+const port = process.env.PORT || 8000;
+app.listen(port, () => console.log(`Listening to port ${port}`));
 
-const PORT = process.env.PORT || 8000;
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+// const express = require('express');
+// const cors = require('cors');
+// const axios = require('axios');
+// const os = require('os');
+// require('dotenv').config();
+
+
+// // Cache the IP information for better performance
+// let cachedIPInfo = null;
+// let lastFetch = null;
+// const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
+
+// // Cached IP information route
+// app.get('/api/host-info/cached', async (req, res, next) => {
+//   try {
+//     const now = Date.now();
+    
+//     if (!cachedIPInfo || !lastFetch || (now - lastFetch > CACHE_DURATION)) {
+//       const internalIP = getInternalIP();
+//       const publicIP = await getPublicIP();
+      
+//       cachedIPInfo = {
+//         internal_ip: internalIP,
+//         public_ip: publicIP,
+//         hostname: os.hostname(),
+//         last_updated: new Date().toISOString()
+//       };
+      
+//       lastFetch = now;
+//     }
+
+//     res.json(cachedIPInfo);
+//   } catch (error) {
+//     next(error);
+//   }
+// });
+
+// // Error handling middleware
+// app.use((err, req, res, next) => {
+//   console.error(err.stack);
+//   res.status(500).json({ 
+//     message: 'Something broke!',
+//     error: process.env.NODE_ENV === 'development' ? err.message : undefined 
+//   });
+// });
+
+// const PORT = process.env.PORT || 8000;
+
+// app.listen(PORT, () => {
+//   console.log(`Server is running on port ${PORT}`);
+//   // Log initial IP information
+//   console.log('Internal IP:', getInternalIP());
+//   getPublicIP().then(ip => console.log('Public IP:', ip));
+// });
