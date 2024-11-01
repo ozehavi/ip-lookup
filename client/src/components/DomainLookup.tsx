@@ -35,7 +35,7 @@ export const ResultMessage: FC<{ searchResult: DomainSearchObject  }> = ({ searc
 }
 
 const cleanDomain = (input: string): string => {
-    return input.replace(/^(https?:\/\/)?(www\.)?/, '');
+    return input.replace(/^(https?:\/\/)?(www\.)?([^\/]+).*/, '$3');
 };
 
 const DomainLookup: FC = () => {
