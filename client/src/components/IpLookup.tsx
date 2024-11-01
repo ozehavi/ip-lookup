@@ -1,8 +1,15 @@
 import { FC } from "react";
 import HostInformation from "./HostInformation";
 import DomainLookup from "./DomainLookup";
+import { History } from "./History";
+import { DomainSearchObject } from "../types/types";
 
 const IpLookup: FC = () => {
+  const examples:DomainSearchObject[] = [{"domain":"fasdfasdfasdf","success":false, timestamp:"1.3.2023"},
+    {"domain":"google.com","success":true,"ip":"142.250.75.46", timestamp:"1.3.2023"},
+    {"domain":"cccc","success":false, timestamp:"1.3.2023"},
+    {"domain":"facebook.com","success":true,"ip":"157.240.196.35", timestamp:"1.3.2023"}
+  ]
   
   return (
     <div className="p-8 max-w-4xl mx-auto">
@@ -10,8 +17,9 @@ const IpLookup: FC = () => {
       <div className="space-y-8">
         <HostInformation />
         <DomainLookup />
+        <History searchs={examples} />
       </div>
-    </div>   
+    </div>
   );
 };
 

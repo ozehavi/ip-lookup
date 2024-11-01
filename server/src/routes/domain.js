@@ -7,27 +7,23 @@ async function resolveDomainIp(domain) {
     const addresses = await dns.resolve4(domain);
 
     if (!addresses || addresses.length === 0) {
-      throw new Error('No IP addresses found for this domain');
+      return { domain: domain, success: false, message: 'No IP addresses found for this domain' };
     }
 
-    return addresses[0];
+    return { domain: domain, success: true, ip: addresses[0] };
   } catch (error) {
     if (error instanceof Error) {
-      throw new Error(`Failed to resolve domain: ${error.message}`);
+      return { domain: domain, success: false, message: `Failed to resolve domain: ${error.message}` };
     }
-    throw new Error('Failed to resolve domain');
+    return { domain: domain, success: false, message: 'Failed to resolve domain' };
   }
 }
 
 router.get('/:domain', async function(req, res, next) {
   try {
-    const domainIp = await resolveDomainIp(req.params.domain);
-    if(!domainIp)
-      return res.status(500).json({ message: 'Unable to fetch domain ip' });
+    const domainObject = await resolveDomainIp(req.params.domain);
 
-    return res.status(200).json({
-      domainIp: domainIp
-    });
+    return res.status(200).json(domainObject);
   } catch (error) {
     next(error);
   }
