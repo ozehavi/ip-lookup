@@ -7,13 +7,24 @@ const dbHandler = {
     },
 
     async getSearchHistory(page = 1, limit = 10) {
-        const searches = await DomainSearch.find()
-            .sort({ timestamp: -1 })
-            .skip((page - 1) * limit)
-            .limit(limit);
+        const startIndex = (page - 1) * limit;
         
-        const total = await DomainSearch.countDocuments();
-        return { searches, total, page };
+        const [items, total] = await Promise.all([
+            DomainSearch.find()
+                .sort({ timestamp: -1 })
+                .skip(startIndex)
+                .limit(limit),
+            DomainSearch.countDocuments()
+        ]);
+        
+        const totalPages = Math.ceil(total / limit);
+        
+        return {
+            items,
+            total,
+            totalPages,
+            currentPage: page
+        };
     },
 
     async clearSearchHistory() {
