@@ -24,7 +24,7 @@ const HostInformation: FC = () => {
       .catch(err => setError(err instanceof Error ? err.message : 'Failed to fetch host information'))
       .finally(() => setLoading(false));
   };
-
+  console.log("hostinformation")
   return (
     <div className="bg-white rounded-2xl shadow-lg p-6">
       <h2 className="text-2xl font-semibold mb-8">

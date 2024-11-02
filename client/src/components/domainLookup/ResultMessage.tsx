@@ -26,7 +26,7 @@ const InvalidDomain: FC<{ searchResult: DomainSearch  }> = ({ searchResult }) =>
           <div className="flex items-center gap-3 min-w-0 w-full">
             <FaExclamationCircle className="h-5 w-5 text-red-600 flex-shrink-0" />
             <div className="text-red-800 font-medium break-words min-w-0">
-              Domain lookup failed: <span className="font-semibold">{searchResult.domain}</span>
+              Domain <span className="font-semibold">{searchResult.domain}</span> could not be found. Please check if the domain name is correct.
             </div>
           </div>
         </div>

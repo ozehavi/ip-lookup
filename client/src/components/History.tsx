@@ -53,12 +53,14 @@ export const History: FC = () => {
   return (
     <div className="space-y-2">
       <div className="p-2 flex justify-end">
-        <button 
-          onClick={()=>{clearHistory()}}
-          className="text-sm text-gray-500 hover:text-gray-700 bg-transparent border-none cursor-pointer"
-        >
-          Clear history
-        </button>
+        { state.searchHistory.length > 0 && 
+          <button 
+            onClick={()=>{clearHistory()}}
+            className="text-sm text-gray-500 hover:text-gray-700 bg-transparent border-none cursor-pointer"
+          >
+            Clear history
+          </button>
+        }
       </div>
       <div className="space-y-4">
         {state.searchHistory.reverse().map((search, index) => (
@@ -68,7 +70,7 @@ export const History: FC = () => {
           >
             <div className="min-w-0 max-w-full">
               <p className="font-semibold break-words">Domain: {search.domain}</p>
-              {search.ip && <p className="text-gray-600 break-words">IP: {search.ip}</p>}
+              {search.ip && <p className="font-semibold break-words">IP: {search.ip}</p>}
               <p className="text-gray-500 text-sm">{format(search.timestamp, 'dd/MM/yyyy, hh:mm a')}</p>
             </div>
             <div
