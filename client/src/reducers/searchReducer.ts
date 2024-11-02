@@ -11,13 +11,14 @@ export const initialSearchState: SearchState = {
 export const searchReducer = (state: SearchState, action: SearchAction): SearchState => {
   switch (action.type) {
     case SEARCH_ACTIONS.SET_CURRENT_SEARCH:
-      const newHistory = [action.payload, ...state.searchHistory];
+      const newItem = action.payload;
+      const updatedHistory = [newItem, ...state.searchHistory];
       return { 
         ...state, 
-        currentSearch: action.payload,
-        searchHistory: newHistory,
+        currentSearch: newItem,
+        searchHistory: updatedHistory,
         currentPage: 1,
-        totalPages: Math.ceil(newHistory.length / ITEMS_PER_PAGE)
+        totalPages: Math.ceil(updatedHistory.length / ITEMS_PER_PAGE)
       };
     case SEARCH_ACTIONS.CLEAR_SEARCH:
       return { 
@@ -30,11 +31,21 @@ export const searchReducer = (state: SearchState, action: SearchAction): SearchS
         currentPage: action.payload
       };
     case SEARCH_ACTIONS.FETCH_HISTORY:
+      const combinedItems = [...state.searchHistory];
+      action.payload.items.forEach(newItem => {
+        const exists = combinedItems.some(
+          existingItem => 
+            existingItem.domain === newItem.domain && 
+            existingItem.timestamp === newItem.timestamp
+        );
+        if (!exists)
+          combinedItems.push(newItem);
+      });
       return { 
         ...state, 
-        searchHistory: action.payload.items,
+        searchHistory: combinedItems,
         currentPage: action.payload.currentPage,
-        totalPages: action.payload.totalPages,
+        totalPages: Math.max(action.payload.totalPages, 1)
       };
     case SEARCH_ACTIONS.CLEAR_HISTORY:
       return { 
