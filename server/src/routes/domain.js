@@ -36,11 +36,8 @@ async function resolveDomainIp(domain) {
 router.get('/:domain', async function(req, res, next) {
   try {
     const domainObject = await resolveDomainIp(req.params.domain);
-    // save search to db 
 
-    // handle fail?
     await dbHandler.saveSearchRecord(domainObject);
-
 
     return res.status(200).json(domainObject);
   } catch (error) {

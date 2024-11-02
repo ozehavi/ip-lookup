@@ -4,9 +4,10 @@ const router = express.Router();
 
 router.get('/', async function(req, res, next) {
   try {
-    const history = await dbHandler.getSearchHistory(1, 10);
-    console.log("history: " + JSON.stringify(history));
-
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+    
+    const history = await dbHandler.getSearchHistory(page, limit);
     return res.status(200).json(history);
   } catch (error) {
     next(error);
