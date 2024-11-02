@@ -3,10 +3,3 @@ export interface HostInfo {
     public_ip: string;
     timestamp?: string;
 }
-
-export interface DomainSearch {
-    domain: string;
-    ip?: string;
-    timestamp: string;
-    success: boolean;
-}

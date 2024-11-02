@@ -1,4 +1,14 @@
-import { DomainSearch } from './types';
+export interface DomainSearch {
+  domain: string;
+  ip?: string;
+  timestamp: string;
+  success: boolean;
+}
+
+export interface SearchState {
+  currentSearch: DomainSearch | null;
+  searchHistory: DomainSearch[];
+}
 
 export const SEARCH_ACTIONS = {
     SET_CURRENT_SEARCH: 'SET_CURRENT_SEARCH',
@@ -6,11 +16,6 @@ export const SEARCH_ACTIONS = {
     FETCH_HISTORY: 'FETCH_HISTORY',
     CLEAR_HISTORY: 'CLEAR_HISTORY'
 } as const;
-
-export interface SearchState {
-  currentSearch: DomainSearch | null;
-  searchHistory: DomainSearch[];
-}
 
 export type SearchAction =
   | { type: 'SET_CURRENT_SEARCH'; payload: DomainSearch }
