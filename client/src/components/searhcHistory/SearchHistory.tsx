@@ -1,8 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import { useSearch } from "../../context/SearchContext";
-import { format } from "date-fns";
 import { SEARCH_ACTIONS } from "../../types/searchTypes";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { HistoryItem } from "./HistoryItem";
 import { HistoryListSkeleton } from "../common/Skeleton";
 
