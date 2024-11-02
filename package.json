@@ -1,6 +1,7 @@
 {
   "name": "ip-lookup",
   "scripts": {
+    "setup": "npm install && (cd client && npm install) && (cd server && npm install)",
     "start": "docker-compose up --build | tee logs/app.log",
     "start:client": "docker-compose up --build client",
     "start:server": "docker-compose up --build server",
