@@ -24,14 +24,14 @@ const HostInformation: FC = () => {
       .catch(err => setError(err instanceof Error ? err.message : 'Failed to fetch host information'))
       .finally(() => setLoading(false));
   };
-  console.log("hostinformation")
+
   return (
     <div className="bg-white rounded-2xl shadow-lg p-6">
       <h2 className="text-2xl font-semibold mb-8">
         Host Information
       </h2>
   
-      {loading ? (
+      { loading ? (
         <Skeleton />
       ) : error ? (
         <div className="text-red-500 p-4 bg-red-50 rounded-lg">
