@@ -1,6 +1,6 @@
 import { FC } from "react"
 import { FaCheck, FaExclamationCircle } from "react-icons/fa"
-import { DomainSearch } from "../../types/types"
+import { DomainSearch } from "../../types/searchTypes";
 
 const ValidDomain: FC<{ searchResult: DomainSearch  }> = ({ searchResult }) => {  
 

@@ -1,6 +1,6 @@
 import { FC } from "react"
-import { DomainSearch } from "../../types/types"
 import { format } from "date-fns"
+import { DomainSearch } from "../../types/searchTypes"
 
 export const HistoryItem: FC<{ item: DomainSearch  }> = ({ item }) => {
   return (
