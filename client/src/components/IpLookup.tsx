@@ -1,7 +1,7 @@
 import { FC } from "react";
 import HostInformation from "./HostInformation";
 import DomainLookup from "./domainLookup/DomainLookup";
-import { History } from "./SearchHistory";
+import { SearchHistory } from "./searhcHistory/SearchHistory";
 import { SearchProvider } from "../context/SearchContext";
 
 const IpLookup: FC = () => {
@@ -13,7 +13,7 @@ const IpLookup: FC = () => {
         <SearchProvider>
           <HostInformation />
           <DomainLookup />
-          <History />
+          <SearchHistory />
         </SearchProvider>
       </div>
     </div>
