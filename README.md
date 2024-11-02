@@ -13,9 +13,9 @@ This project is an IP Lookup application built using Node.js and React, containe
 ## Prerequisites
 
 Before you begin, ensure you have the following installed on your machine:
-- [Docker](https://www.docker.com/get-started)
+- [Docker] (https://www.docker.com/get-started)
 - [Docker Compose](https://docs.docker.com/compose/)
-- [Node.js and npm](https://nodejs.org/) (for running the application and managing dependencies)
+- [Node.js and npm] Node version **18.x** or higher (https://nodejs.org/) (for running the application and managing dependencies)
 
 ## Getting Started
 
