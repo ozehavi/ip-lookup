@@ -2,7 +2,7 @@
 
 This project is an IP Lookup application built using Node.js and React, containerized with Docker. It connects to a MongoDB database to store and retrieve IP address information.
 
-![Demo of IP Lookup Application](https://raw.githubusercontent.com/ozehavi/ip-lookup/main/assets/demo.gif)
+![Demo of IP Lookup Application](https://github.com/ozehavi/ip-lookup/blob/main/demo.gif)
 
 
 ## Table of Contents
