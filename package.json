@@ -2,7 +2,7 @@
   "name": "ip-lookup",
   "scripts": {
     "setup": "npm install && (cd client && npm install) && (cd server && npm install)",
-    "start": "docker-compose up --build | tee logs/app.log",
+    "start": "docker-compose up --build",
     "start:client": "docker-compose up --build client",
     "start:server": "docker-compose up --build server",
     "stop": "docker-compose down",
@@ -13,6 +13,5 @@
     "logs:server": "docker-compose logs -f server"
   },
   "dependencies": {
-    "axios": "^1.7.7"
   }
 }
