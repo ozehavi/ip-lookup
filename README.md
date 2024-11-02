@@ -28,3 +28,18 @@ Before you begin, ensure you have the following installed on your machine:
    ```bash
    git clone <repository-url>
    cd ip-lookup
+
+2. **Install Dependencies**:
+This will install all required dependencies for the application (both server and client)
+   ```bash
+   npm run setup
+
+3. **Run the application**:
+This will use docker-compose in order to run the application. This command will build the necessary images, create the containers, and start the application. 
+   ```bash
+   npm run start
+
+4. **Stop the application**:
+In order to stop the application and remove the containers, you can run:
+   ```bash
+   npm run stop
