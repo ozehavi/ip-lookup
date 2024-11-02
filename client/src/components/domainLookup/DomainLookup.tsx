@@ -36,7 +36,7 @@ const DomainLookup: FC = () => {
             return response.json();
         })
         .then((data) => {
-            console.log("---", JSON.stringify(data));
+            console.log(JSON.stringify(data));
             dispatch({ type: SEARCH_ACTIONS.SET_CURRENT_SEARCH, payload: data });
         })
         .catch(err => {
