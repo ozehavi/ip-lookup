@@ -12,6 +12,7 @@ export const searchReducer = (state: SearchState, action: SearchAction): SearchS
   switch (action.type) {
     case SEARCH_ACTIONS.SET_CURRENT_SEARCH:
       const newItem = action.payload;
+      newItem.domain = decodeURIComponent(newItem.domain);
       const updatedHistory = [newItem, ...state.searchHistory];
       return { 
         ...state, 

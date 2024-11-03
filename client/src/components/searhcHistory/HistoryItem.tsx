@@ -6,7 +6,7 @@ export const HistoryItem: FC<{ item: DomainSearch  }> = ({ item }) => {
   return (
     <div className="p-4 border rounded-lg bg-gray-50 flex justify-between items-center">
       <div className="min-w-0 max-w-full">
-          <p className="font-semibold break-words">Domain: {item.domain}</p>
+          <p className="font-semibold break-words">Domain: {decodeURIComponent(item.domain)}</p>
           {item.ip && <p className="font-semibold break-words">IP: {item.ip}</p>}
           <p className="text-gray-500 text-sm">{format(item.timestamp, 'dd/MM/yyyy, hh:mm a')}</p>
       </div>

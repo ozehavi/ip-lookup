@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const os = require('os');
-const axios = require('axios');
 
 const getInternalIP = () => {
   const interfaces = os.networkInterfaces();
@@ -18,8 +17,9 @@ const getInternalIP = () => {
 
 const getPublicIP = async () => {
   try {
-    const response = await axios.get('https://api.ipify.org?format=json');
-    return response.data.ip;
+    const response = await fetch('https://api.ipify.org?format=json');
+    const data = await response.json();
+    return data.ip;
   } catch (error) {
     console.error('Error fetching public IP:', error);
     return 'Unable to determine public IP';
