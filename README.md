@@ -32,13 +32,11 @@ npm run setup
 ```
 
 3. **Run the application**:
-This will use docker-compose in order to run the application. This command will build the necessary images, create the containers, and start the application. 
+This will use docker-compose in order to run the application. This command will build the necessary images, create the containers, and start the application.
+Once the application has started, you can access it at http://localhost:3000/.
 ```bash
 npm run start
 ```
-
-Once the application has started, you can access it at http://localhost:3000/.
-
 
 4. **Stop the application**:
 In order to stop the application and remove the containers, you can run:
